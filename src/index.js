@@ -1,10 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-
-import ShoppingList from './components/ShoppingList';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import ListReducer from "./redux/LIstReducers";
+import ShoppingListContainer from "./components/ShoppingListContainer";
 
-ReactDOM.render(<ShoppingList/>, document.getElementById('root'));
+const store = createStore(ListReducer);
+
+ReactDOM.render(<Provider store={store}><ShoppingListContainer/></Provider>, document.getElementById('root'));
 
