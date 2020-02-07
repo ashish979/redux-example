@@ -3,46 +3,9 @@ import List from './List';
 import AddListItem from './AddListItem';
 
 class ShoppingList extends Component {
-  constructor() {
-    super();
-
-    this.state = {
-      list: {},
-    };
-
-    this.removeListItem = this.removeListItem.bind(this);
-    this.removeAllListItems = this.removeAllListItems.bind(this);
-    this.addListItem = this.addListItem.bind(this);
-  }
-
-  updateList(list) {
-    this.setState({
-      list,
-    });
-  }
-
-  addListItem(item) {
-    const { list } = this.state;
-
-    list[item.id] = item;
-
-    this.updateList(list);
-  }
-
-  removeListItem(itemId) {
-    const { list } = this.state;
-
-    delete list[itemId];
-
-    this.updateList(list);
-  }
-
-  removeAllListItems() {
-    this.updateList({});
-  }
-
+  
   render() {
-    const items = this.state.list;
+    const { items, removeItem, removeAllItems, addItem } = this.props;
 
     return (
       <div className="container">
@@ -51,14 +14,14 @@ class ShoppingList extends Component {
 
             <List
               items={items}
-              removeListItem={this.removeListItem}
-              removeAllListItems={this.removeAllListItems}
+              removeListItem={removeItem}
+              removeAllListItems={removeAllItems}
             />
 
           </div>
           <div className="col-sm-6">
 
-            <AddListItem addListItem={this.addListItem} />
+            <AddListItem addListItem={ addItem } />
 
           </div>
         </div>
