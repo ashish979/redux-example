@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { ListActions } from "../redux/ListActions";
-import ShoppingList from "../../../shoppinglist-base/src/components/ShoppingList";
+import ShoppingList from "./ShoppingList";
 
 const mapStateToProps = state => {
   return {
